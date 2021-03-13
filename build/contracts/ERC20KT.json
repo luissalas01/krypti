@@ -1,0 +1,125 @@
+{
+  "contractName": "ERC20KT",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/soporte.fractall/Documents/Projects/krypti/contracts/ERC20KT.sol\":\"ERC20KT\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/soporte.fractall/Documents/Projects/krypti/contracts/ERC20KT.sol\":{\"keccak256\":\"0x3ec84e5c41829129c465fc5755c9322d29aa8d87c226a9566a83a5bcac6bcda8\",\"urls\":[\"bzz-raw://2525995995afa6ee34eaf4b63005b5e20dd100502d732e38c4f7d773bb2fed87\",\"dweb:/ipfs/QmbzGx2CocmTtFdA6xhAhQn8NKqCGvijwGcPoRwDMPFroK\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212204934d5c262427c72c7d716e4939e17ce9133180619da8534a00a1ff82d06f7c764736f6c63430007000033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212204934d5c262427c72c7d716e4939e17ce9133180619da8534a00a1ff82d06f7c764736f6c63430007000033",
+  "immutableReferences": {},
+  "sourceMap": "26:25:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:25:0:-:0;;;;;",
+  "source": "pragma solidity ^0.7.0;\n\n\ncontract ERC20KT {\n    \n}\n",
+  "sourcePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/ERC20KT.sol",
+  "ast": {
+    "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/ERC20KT.sol",
+    "exportedSymbols": {
+      "ERC20KT": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": null,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "ERC20KT",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "26:25:0"
+      }
+    ],
+    "src": "0:52:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/ERC20KT.sol",
+      "exportedSymbols": {
+        "ERC20KT": [
+          2
+        ]
+      },
+      "license": null
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2
+          ],
+          "name": "ERC20KT",
+          "nodes": [
+            null
+          ],
+          "scope": 3
+        },
+        "id": 2,
+        "name": "ContractDefinition",
+        "src": "26:25:0"
+      }
+    ],
+    "id": 3,
+    "name": "SourceUnit",
+    "src": "0:52:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.0+commit.9e61f92b.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-12T19:44:44.466Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
