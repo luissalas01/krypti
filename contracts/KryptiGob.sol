@@ -27,6 +27,7 @@ contract KryptiGob {
         bool executed;
         string description;
         mapping (address => Receipt) receipts;
+        address[] keys;
     }
 
     struct Receipt {
@@ -89,9 +90,12 @@ contract KryptiGob {
 
     function execute(uint proposalId) public payable {
         Proposal storage proposal = proposals[proposalId];
+
         proposal.executed = true;
 
-        for(uint i = 0; i<)
+        for(uint i = 0; i < proposal.keys.length - 1 ; i++){
+            Krypti.freezeAccount(proposal.keys[i] , false);
+        }
 
         emit ProposalExecuted(proposalId);
     }
@@ -138,6 +142,7 @@ contract KryptiGob {
         } else {
             proposal.againsVotes = votes;
         }
+        proposal.keys.push(voter);
 
         receipt.hasVoted = true;
         receipt.proVote = support;
