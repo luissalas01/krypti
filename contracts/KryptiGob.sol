@@ -2,11 +2,11 @@ pragma solidity ^0.7.0;
 
 contract KryptiGob {
 
-    string public constant name = "Krypti Governance contract";
+    string public constant name = "Kripty Governance contract";
 
-    function supportVotes() public pure returns (uint) { return 10000; }
+    function supportVotes() public pure returns (uint) { return 100000; }
 
-    function proposalThreshold() public pure returns (uint) { return 5000; }
+    function proposalThreshold() public pure returns (uint) { return 10000; }
     
     function votingDelay() public pure returns (uint) { return 1; } // 1 block
 
@@ -90,6 +90,9 @@ contract KryptiGob {
     function execute(uint proposalId) public payable {
         Proposal storage proposal = proposals[proposalId];
         proposal.executed = true;
+
+        for(uint i = 0; i<)
+
         emit ProposalExecuted(proposalId);
     }
 
@@ -126,11 +129,29 @@ contract KryptiGob {
         require(state(proposalId) == ProposalState.Active, "Voting is closed");
         Proposal storage proposal = proposals[proposalId];
         Receipt storage receipt = proposal.receipts[voter];
-        require(receipt.hasVoted, "hola");
+        require(receipt.hasVoted == false , "voter already voted");
+        
+        uint votes = Krypti.balanceOf(voter);
+
+        if (support) {
+            proposal.proVotes = votes;
+        } else {
+            proposal.againsVotes = votes;
+        }
+
+        receipt.hasVoted = true;
+        receipt.proVote = support;
+        receipt.votes = votes;
+
+        Krypti.freezeAccount(voter, true);
+
+        emit Vote(voter, proposalId, support, votes);
+
     }
  
 }
 
 interface KryptiInterface {
         function balanceOf(address account) external view returns (uint);
+        function freezeAccount(address target, bool freeze) external;
 }
