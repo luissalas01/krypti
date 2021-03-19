@@ -1,0 +1,151 @@
+{
+  "contractName": "KryptiFide",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/soporte.fractall/Documents/Projects/krypti/contracts/KryptiFide.sol\":\"KryptiFide\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/soporte.fractall/Documents/Projects/krypti/contracts/Krypti.sol\":{\"keccak256\":\"0x8b185bc42db41634dbbf8523d9cfaf082e603f3c20028f44e87dd94b53309d50\",\"urls\":[\"bzz-raw://6d8e12918bd4e65df10174ce657d05913a86377635bb722e6b0b06d87e8e9e56\",\"dweb:/ipfs/QmSJ25LxugPHBwqnxPqxDw8xbocngHuNoPrvpV2XzhiNUj\"]},\"/Users/soporte.fractall/Documents/Projects/krypti/contracts/KryptiFide.sol\":{\"keccak256\":\"0x506df3659ea8c9674e435729862fa44c264fbde21c235d83685db0beb618201b\",\"urls\":[\"bzz-raw://b10dd1f5e19be766470a5abb1ad1e95075a8ce7dcc630157adf80105b0d4c9e8\",\"dweb:/ipfs/QmdtyJ55bq4aarQFGdzzPbC3ng8cZKaFGejszHXBhw5mCs\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x15e2d5bd4c28a88548074c54d220e8086f638a71ed07e6b3ba5a70066fcf458d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://90faf5851c02f9bd42c5bfb54d4f0421a2612f50ab80b2c4fa24fa3792071cc2\",\"dweb:/ipfs/QmRGM4F2PcGVF85aTfaA9YBhCHHDqrMhRjyp6fGeBTtirb\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c\",\"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xca0c2396dbeb3503b51abf4248ebf77a1461edad513c01529df51850a012bee3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://991b44ff44e0496e8554a90f4c0512c28faed45104d40430019f3c67ea67740e\",\"dweb:/ipfs/Qmc3nRapVbcctELoZS5qe17zLkFB3bETBfwzCTMF1CSuGE\"]},\"@openzeppelin/contracts/token/ERC20/ERC20Capped.sol\":{\"keccak256\":\"0x94e4d02b80450cf26bec54be6c0cf52fe4e8ce91dfc6e97794dce19ded2a3fa4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://16f5115e0d29a8e2e88ef152dc49c8dfe37d484c2b7ce97ed4532889ac2bda3c\",\"dweb:/ipfs/QmZBKMdf6EdHv7XBSaiN7rgrQwTqNG5q1nD75NPM6ECZYe\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122082ee65f096b617958642906f7f75001e64c16d1b652c6bf9db46bd8088ddb82c64736f6c63430007000033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122082ee65f096b617958642906f7f75001e64c16d1b652c6bf9db46bd8088ddb82c64736f6c63430007000033",
+  "immutableReferences": {},
+  "sourceMap": "49:28:1:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "49:28:1:-:0;;;;;",
+  "source": "pragma solidity ^0.7.0;\n\nimport \"./Krypti.sol\";\n\ncontract KryptiFide {\n    \n}",
+  "sourcePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/KryptiFide.sol",
+  "ast": {
+    "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/KryptiFide.sol",
+    "exportedSymbols": {
+      "KryptiFide": [
+        101
+      ]
+    },
+    "id": 102,
+    "license": null,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 99,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/Krypti.sol",
+        "file": "./Krypti.sol",
+        "id": 100,
+        "nodeType": "ImportDirective",
+        "scope": 102,
+        "sourceUnit": 98,
+        "src": "25:22:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 101,
+        "linearizedBaseContracts": [
+          101
+        ],
+        "name": "KryptiFide",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 102,
+        "src": "49:28:1"
+      }
+    ],
+    "src": "0:77:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/KryptiFide.sol",
+      "exportedSymbols": {
+        "KryptiFide": [
+          101
+        ]
+      },
+      "license": null
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 99,
+        "name": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 98,
+          "absolutePath": "/Users/soporte.fractall/Documents/Projects/krypti/contracts/Krypti.sol",
+          "file": "./Krypti.sol",
+          "scope": 102,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 100,
+        "name": "ImportDirective",
+        "src": "25:22:1"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            101
+          ],
+          "name": "KryptiFide",
+          "nodes": [
+            null
+          ],
+          "scope": 102
+        },
+        "id": 101,
+        "name": "ContractDefinition",
+        "src": "49:28:1"
+      }
+    ],
+    "id": 102,
+    "name": "SourceUnit",
+    "src": "0:77:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.0+commit.9e61f92b.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-18T19:55:35.448Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

@@ -29,7 +29,7 @@ contract Krypti is ERC20Capped, Ownable {
 
 	function _beforeTokenTransfer(address from, address to, uint256 amount) internal override (ERC20Capped) {
         super._beforeTokenTransfer(from, to, amount);
-		require(!frozenacc[msg.sender], "El usuario tiene congelados sus fondos");
+				require(!frozenacc[msg.sender], "El usuario tiene congelados sus fondos");
     }
 
 }

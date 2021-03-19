@@ -107,6 +107,10 @@ contract KryptiGob {
         Proposal storage proposal = proposals[proposalId];
         proposal.canceled = true;
 
+        for(uint i = 0; i < proposal.keys.length - 1 ; i++){
+            Krypti.freezeAccount(proposal.keys[i] , false);
+        }
+
         emit ProposalCanceled(proposalId);
     }
 
