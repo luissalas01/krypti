@@ -1,6 +1,7 @@
 pragma solidity ^0.7.0;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract KryptiGob {
+contract KryptiGob is Ownable {
 
     string public constant name = "Kripty Governance contract";
 
@@ -59,55 +60,57 @@ contract KryptiGob {
     }
 
     function propose(string memory description_) public returns (uint) {
-        require(Krypti.balanceOf(msg.sender) > proposalThreshold(), "Proposer votes below proposal threshold");
+        require(Krypti.balanceOf(msg.sender) >= proposalThreshold(), "Proposer votes below proposal threshold");
 
         uint lastestProposalId = lastestProposalIds[msg.sender];
         if (lastestProposalId != 0) {
             ProposalState proposalState = state(lastestProposalId);
             require(proposalState != ProposalState.Active, "Found an active proposal from you");
             require(proposalState != ProposalState.Pending, "Found a pending proposal from you");
-
-            uint startBlock = block.number + votingDelay();
-            uint endBlock = startBlock + votingPeriod();
-
-            proposals[proposalCount].id = proposalCount;
-            proposals[proposalCount].proposer = msg.sender;
-            proposals[proposalCount].startBlock = startBlock;
-            proposals[proposalCount].endBlock = endBlock;
-            proposals[proposalCount].proVotes = 0;
-            proposals[proposalCount].againsVotes = 0;
-            proposals[proposalCount].canceled = false;
-            proposals[proposalCount].executed = false;
-            proposals[proposalCount].description = description_;
-
-            lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;
-            proposalCount++;
-
-            emit ProposalCreated(proposals[proposalCount - 1].id, msg.sender, startBlock, endBlock, description_);
-            return proposals[proposalCount - 1].id;
         }
+        
+        uint startBlock = block.number + votingDelay();
+        uint endBlock = startBlock + votingPeriod();
+        proposalCount++;
+
+        proposals[proposalCount].id = proposalCount;
+        proposals[proposalCount].proposer = msg.sender;
+        proposals[proposalCount].startBlock = startBlock;
+        proposals[proposalCount].endBlock = endBlock;
+        proposals[proposalCount].proVotes = 0;
+        proposals[proposalCount].againsVotes = 0;
+        proposals[proposalCount].canceled = false;
+        proposals[proposalCount].executed = false;
+        proposals[proposalCount].description = description_;
+
+        lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;
+        Krypti.freezeAccount(msg.sender, true);
+
+        emit ProposalCreated(proposals[proposalCount].id, msg.sender, startBlock, endBlock, description_);
+        return proposals[proposalCount].id;
     }
 
-    function execute(uint proposalId) public payable {
+    function execute(uint proposalId) public payable onlyOwner() {
+        //TODO: agregar require de estado vs supportVotes
+        require(state(proposalId) != ProposalState.Defeated || state(proposalId) != ProposalState.Canceled, "Votos no suficientes para ejecutar esta propuesta");
         Proposal storage proposal = proposals[proposalId];
 
         proposal.executed = true;
 
-        for(uint i = 0; i < proposal.keys.length - 1 ; i++){
+        for(uint i = 0; i < proposal.keys.length ; i++){
             Krypti.freezeAccount(proposal.keys[i] , false);
         }
 
         emit ProposalExecuted(proposalId);
     }
 
-    function cancel(uint proposalId) public {
-        //ProposalState state = 
-        require(state(proposalId) != ProposalState.Executed, "No se puede cancelar una propuesta que ya fue ejecutada");
+    function cancel(uint proposalId) public onlyOwner() {
+        require(state(proposalId) != ProposalState.Executed || state(proposalId) != ProposalState.Succeeded, "No se puede cancelar una propuesta que ya fue ejecutada");
 
         Proposal storage proposal = proposals[proposalId];
         proposal.canceled = true;
 
-        for(uint i = 0; i < proposal.keys.length - 1 ; i++){
+        for(uint i = 0; i < proposal.keys.length; i++){
             Krypti.freezeAccount(proposal.keys[i] , false);
         }
 
