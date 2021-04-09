@@ -3,7 +3,7 @@ pragma solidity ^0.7.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20Capped.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Krypti is ERC20Capped, Ownable {
+contract Kripty is ERC20Capped, Ownable {
 	
 	uint256 public releaseDate;
 	mapping (address => bool) public frozenacc;
@@ -11,14 +11,16 @@ contract Krypti is ERC20Capped, Ownable {
 	event FroxenFunds(address target, bool frozen);
 
 	constructor(
-		address _ownerAddress
+		address _ownerAddress,
+		address _escrow
 	)
 
-	ERC20("Krypti", "KRPT")
-	ERC20Capped(1000000)
+	ERC20("Kripty", "KRPT")
+	ERC20Capped(100000)
 	public{
 		_setupDecimals(0);
-		 _mint(_ownerAddress, 1000000);
+		 _mint(_ownerAddress, 40000);
+		 _mint(_escrow, 60000);
 		releaseDate  = block.timestamp;
 	}
 

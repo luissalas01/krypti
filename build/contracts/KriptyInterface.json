@@ -1,5 +1,5 @@
 {
-  "contractName": "KryptiInterface",
+  "contractName": "KriptyInterface",
   "abi": [
     {
       "inputs": [
@@ -39,21 +39,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"freeze\",\"type\":\"bool\"}],\"name\":\"freezeAccount\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KryptiGob.sol\":\"KryptiInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KryptiGob.sol\":{\"keccak256\":\"0x8a435e4c71872b0e85f1e39d366dbce589669e144299682a84252cae5114ecb6\",\"urls\":[\"bzz-raw://505f68a25a03fef0b18b68a6f3ad1ac4c67274b964a886348f7be6d6505f9e3c\",\"dweb:/ipfs/QmSNLubHT86mgpb4u9aKtCSzgvUVuWtpjjkXfDf9wNGgJT\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x126466a7effc83fa2075bb63433623781dfc38d2dd85c641a096f5587d6b7103\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://758be97dbc310a71c066490fc48c456ef12d930e1097d5d7eb8e17e94d5a19a2\",\"dweb:/ipfs/Qma5RFZQTJAxwsNqW6DV1z7AJE26qifCPm4PNqYhu5f8vZ\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xbc7f2f08b805e299fa2d5e702051171f670ded2808044dfeb6fab4357f167138\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53f7f10bb120dca002788bc57a82cb2b17178312ed95c55a378a77f9a0803ee3\",\"dweb:/ipfs/QmYPMCJo9HA9WuvkTaCHJVGipyXNUr3skeEVSXj3QJgc8U\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"freeze\",\"type\":\"bool\"}],\"name\":\"freezeAccount\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KriptyGob.sol\":\"KriptyInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KriptyGob.sol\":{\"keccak256\":\"0xb1962365bccf1126fb7f537ec8426ac72afea594583667fbb4b1481006fa22e9\",\"urls\":[\"bzz-raw://19e83e5ff94cfa334e88b8efee16d43010bbba0e4d77f88c0f0a1901df93d119\",\"dweb:/ipfs/QmNMS5FFx2AFTSgvGmcp6NfZbcoyq6sJQrCmVS1d5RzVfV\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x126466a7effc83fa2075bb63433623781dfc38d2dd85c641a096f5587d6b7103\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://758be97dbc310a71c066490fc48c456ef12d930e1097d5d7eb8e17e94d5a19a2\",\"dweb:/ipfs/Qma5RFZQTJAxwsNqW6DV1z7AJE26qifCPm4PNqYhu5f8vZ\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xbc7f2f08b805e299fa2d5e702051171f670ded2808044dfeb6fab4357f167138\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53f7f10bb120dca002788bc57a82cb2b17178312ed95c55a378a77f9a0803ee3\",\"dweb:/ipfs/QmYPMCJo9HA9WuvkTaCHJVGipyXNUr3skeEVSXj3QJgc8U\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.7.0;\r\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\r\n\r\ncontract KriptyGob is Ownable {\r\n\r\n    string public constant name = \"Kripty Governance contract\";\r\n\r\n    function supportVotes() public pure returns (uint) { return 1000; }\r\n\r\n    function proposalThreshold() public pure returns (uint) { return 50; }\r\n    \r\n    function votingDelay() public pure returns (uint) { return 1; } // 1 block\r\n\r\n    function votingPeriod() public pure returns (uint) { return 17280; } //3 days in blocks\r\n\r\n    KryptiInterface public Krypti;\r\n\r\n    uint public proposalCount;\r\n\r\n    struct Proposal {\r\n        uint id;\r\n        address proposer;\r\n        uint startBlock;\r\n        uint endBlock;\r\n        uint proVotes;\r\n        uint againsVotes;\r\n        bool canceled;\r\n        bool executed;\r\n        string description;\r\n        mapping (address => Receipt) receipts;\r\n        address[] keys;\r\n    }\r\n\r\n    struct Receipt {\r\n        bool hasVoted;\r\n        bool proVote;\r\n        uint votes;\r\n    }\r\n\r\n    enum ProposalState {\r\n        Pending,\r\n        Active,\r\n        Canceled,\r\n        Defeated,\r\n        Succeeded,\r\n        Expired,\r\n        Executed\r\n    }\r\n\r\n    mapping (uint => Proposal) public proposals;\r\n    mapping (address => uint) public lastestProposalIds;\r\n\r\n    event ProposalCreated(uint id, address proposer, uint startBlock, uint endBlock, string description);\r\n    event Vote(address voter, uint proposalId, bool proVote, uint votes);\r\n    event ProposalCanceled(uint id);\r\n    event ProposalExecuted(uint id);\r\n\r\n    constructor(address krypti_) public {\r\n        Krypti = KryptiInterface(krypti_);\r\n    }\r\n\r\n    function propose(string memory description_) public returns (uint) {\r\n        require(Krypti.balanceOf(msg.sender) >= proposalThreshold(), \"Proposer votes below proposal threshold\");\r\n\r\n        uint lastestProposalId = lastestProposalIds[msg.sender];\r\n        if (lastestProposalId != 0) {\r\n            ProposalState proposalState = state(lastestProposalId);\r\n            require(proposalState != ProposalState.Active, \"Found an active proposal from you\");\r\n            require(proposalState != ProposalState.Pending, \"Found a pending proposal from you\");\r\n        }\r\n        \r\n        uint startBlock = block.number + votingDelay();\r\n        uint endBlock = startBlock + votingPeriod();\r\n        proposalCount++;\r\n\r\n        proposals[proposalCount].id = proposalCount;\r\n        proposals[proposalCount].proposer = msg.sender;\r\n        proposals[proposalCount].startBlock = startBlock;\r\n        proposals[proposalCount].endBlock = endBlock;\r\n        proposals[proposalCount].proVotes = 0;\r\n        proposals[proposalCount].againsVotes = 0;\r\n        proposals[proposalCount].canceled = false;\r\n        proposals[proposalCount].executed = false;\r\n        proposals[proposalCount].description = description_;\r\n\r\n        lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;\r\n        Krypti.freezeAccount(msg.sender, true);\r\n\r\n        emit ProposalCreated(proposals[proposalCount].id, msg.sender, startBlock, endBlock, description_);\r\n        return proposals[proposalCount].id;\r\n    }\r\n\r\n    function execute(uint proposalId) public payable onlyOwner() {\r\n        //TODO: agregar require de estado vs supportVotes\r\n        require(state(proposalId) != ProposalState.Defeated || state(proposalId) != ProposalState.Canceled, \"Votos no suficientes para ejecutar esta propuesta\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n\r\n        proposal.executed = true;\r\n\r\n        for(uint i = 0; i < proposal.keys.length ; i++){\r\n            Krypti.freezeAccount(proposal.keys[i] , false);\r\n        }\r\n\r\n        emit ProposalExecuted(proposalId);\r\n    }\r\n\r\n    function cancel(uint proposalId) public onlyOwner() {\r\n        require(state(proposalId) != ProposalState.Executed || state(proposalId) != ProposalState.Succeeded, \"No se puede cancelar una propuesta que ya fue ejecutada\");\r\n\r\n        Proposal storage proposal = proposals[proposalId];\r\n        proposal.canceled = true;\r\n\r\n        for(uint i = 0; i < proposal.keys.length; i++){\r\n            Krypti.freezeAccount(proposal.keys[i] , false);\r\n        }\r\n\r\n        emit ProposalCanceled(proposalId);\r\n    }\r\n\r\n    function state(uint proposalId) private view returns (ProposalState) {\r\n        require(proposalCount >= proposalId && proposalId > 0, \"invalid proposal id\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n        if (proposal.canceled) {\r\n            return ProposalState.Canceled;\r\n        } else if (block.number <= proposal.startBlock) {\r\n            return ProposalState.Pending;\r\n        } else if (block.number <= proposal.endBlock) {\r\n            return ProposalState.Active;\r\n        } else if (proposal.proVotes <= proposal.againsVotes || proposal.proVotes < supportVotes()) {\r\n            return ProposalState.Defeated;\r\n        } else if (proposal.executed) {\r\n            return ProposalState.Executed;\r\n        //} else if (block.timestamp >= ) TODO: retornar expired\r\n        } else {\r\n            return ProposalState.Succeeded;\r\n        }\r\n    }\r\n\r\n    function vote(address voter, uint proposalId, bool support) public {\r\n        require(state(proposalId) == ProposalState.Active, \"Voting is closed\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n        Receipt storage receipt = proposal.receipts[voter];\r\n        require(receipt.hasVoted == false , \"voter already voted\");\r\n        \r\n        uint votes = Krypti.balanceOf(voter);\r\n\r\n        if (support) {\r\n            proposal.proVotes += votes;\r\n        } else {\r\n            proposal.againsVotes += votes;\r\n        }\r\n        proposal.keys.push(voter);\r\n\r\n        receipt.hasVoted = true;\r\n        receipt.proVote = support;\r\n        receipt.votes = votes;\r\n\r\n        Krypti.freezeAccount(voter, true);\r\n\r\n        emit Vote(voter, proposalId, support, votes);\r\n\r\n    }\r\n \r\n}\r\n\r\ninterface KryptiInterface {\r\n        function balanceOf(address account) external view returns (uint);\r\n        function freezeAccount(address target, bool freeze) external;\r\n}\r\n",
-  "sourcePath": "I:/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KryptiGob.sol",
+  "source": "pragma solidity ^0.7.0;\r\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\r\n\r\ncontract KriptyGob is Ownable {\r\n\r\n    string public constant name = \"Kripty Governance contract\";\r\n\r\n    function supportVotes() public pure returns (uint) { return 1000; }\r\n\r\n    function proposalThreshold() public pure returns (uint) { return 50; }\r\n    \r\n    function votingDelay() public pure returns (uint) { return 1; } // 1 block\r\n\r\n    function votingPeriod() public pure returns (uint) { return 17280; } //3 days in blocks\r\n\r\n    KriptyInterface public Kripty;\r\n\r\n    uint public proposalCount;\r\n\r\n    struct Proposal {\r\n        uint id;\r\n        address proposer;\r\n        uint startBlock;\r\n        uint endBlock;\r\n        uint proVotes;\r\n        uint againsVotes;\r\n        bool canceled;\r\n        bool executed;\r\n        string description;\r\n        mapping (address => Receipt) receipts;\r\n        address[] keys;\r\n    }\r\n\r\n    struct Receipt {\r\n        bool hasVoted;\r\n        bool proVote;\r\n        uint votes;\r\n    }\r\n\r\n    enum ProposalState {\r\n        Pending,\r\n        Active,\r\n        Canceled,\r\n        Defeated,\r\n        Succeeded,\r\n        Expired,\r\n        Executed\r\n    }\r\n\r\n    mapping (uint => Proposal) public proposals;\r\n    mapping (address => uint) public lastestProposalIds;\r\n\r\n    event ProposalCreated(uint id, address proposer, uint startBlock, uint endBlock, string description);\r\n    event Vote(address voter, uint proposalId, bool proVote, uint votes);\r\n    event ProposalCanceled(uint id);\r\n    event ProposalExecuted(uint id);\r\n\r\n    constructor(address kripty_) public {\r\n        Kripty = KriptyInterface(kripty_);\r\n    }\r\n\r\n    function propose(string memory description_) public returns (uint) {\r\n        require(Kripty.balanceOf(msg.sender) >= proposalThreshold(), \"Proposer votes below proposal threshold\");\r\n\r\n        uint lastestProposalId = lastestProposalIds[msg.sender];\r\n        if (lastestProposalId != 0) {\r\n            ProposalState proposalState = state(lastestProposalId);\r\n            require(proposalState != ProposalState.Active, \"Found an active proposal from you\");\r\n            require(proposalState != ProposalState.Pending, \"Found a pending proposal from you\");\r\n        }\r\n        \r\n        uint startBlock = block.number + votingDelay();\r\n        uint endBlock = startBlock + votingPeriod();\r\n        proposalCount++;\r\n\r\n        proposals[proposalCount].id = proposalCount;\r\n        proposals[proposalCount].proposer = msg.sender;\r\n        proposals[proposalCount].startBlock = startBlock;\r\n        proposals[proposalCount].endBlock = endBlock;\r\n        proposals[proposalCount].proVotes = 0;\r\n        proposals[proposalCount].againsVotes = 0;\r\n        proposals[proposalCount].canceled = false;\r\n        proposals[proposalCount].executed = false;\r\n        proposals[proposalCount].description = description_;\r\n\r\n        lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;\r\n        Kripty.freezeAccount(msg.sender, true);\r\n\r\n        emit ProposalCreated(proposals[proposalCount].id, msg.sender, startBlock, endBlock, description_);\r\n        return proposals[proposalCount].id;\r\n    }\r\n\r\n    function execute(uint proposalId) public payable onlyOwner() {\r\n        //TODO: agregar require de estado vs supportVotes\r\n        require(state(proposalId) != ProposalState.Defeated || state(proposalId) != ProposalState.Canceled, \"Votos no suficientes para ejecutar esta propuesta\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n\r\n        proposal.executed = true;\r\n\r\n        for(uint i = 0; i < proposal.keys.length ; i++){\r\n            Kripty.freezeAccount(proposal.keys[i] , false);\r\n        }\r\n\r\n        emit ProposalExecuted(proposalId);\r\n    }\r\n\r\n    function cancel(uint proposalId) public onlyOwner() {\r\n        require(state(proposalId) != ProposalState.Executed || state(proposalId) != ProposalState.Succeeded, \"No se puede cancelar una propuesta que ya fue ejecutada\");\r\n\r\n        Proposal storage proposal = proposals[proposalId];\r\n        proposal.canceled = true;\r\n\r\n        for(uint i = 0; i < proposal.keys.length; i++){\r\n            Kripty.freezeAccount(proposal.keys[i] , false);\r\n        }\r\n\r\n        emit ProposalCanceled(proposalId);\r\n    }\r\n\r\n    function state(uint proposalId) private view returns (ProposalState) {\r\n        require(proposalCount >= proposalId && proposalId > 0, \"invalid proposal id\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n        if (proposal.canceled) {\r\n            return ProposalState.Canceled;\r\n        } else if (block.number <= proposal.startBlock) {\r\n            return ProposalState.Pending;\r\n        } else if (block.number <= proposal.endBlock) {\r\n            return ProposalState.Active;\r\n        } else if (proposal.proVotes <= proposal.againsVotes || proposal.proVotes < supportVotes()) {\r\n            return ProposalState.Defeated;\r\n        } else if (proposal.executed) {\r\n            return ProposalState.Executed;\r\n        //} else if (block.timestamp >= ) TODO: retornar expired\r\n        } else {\r\n            return ProposalState.Succeeded;\r\n        }\r\n    }\r\n\r\n    function vote(address voter, uint proposalId, bool support) public {\r\n        require(state(proposalId) == ProposalState.Active, \"Voting is closed\");\r\n        Proposal storage proposal = proposals[proposalId];\r\n        Receipt storage receipt = proposal.receipts[voter];\r\n        require(receipt.hasVoted == false , \"voter already voted\");\r\n        \r\n        uint votes = Kripty.balanceOf(voter);\r\n\r\n        if (support) {\r\n            proposal.proVotes += votes;\r\n        } else {\r\n            proposal.againsVotes += votes;\r\n        }\r\n        proposal.keys.push(voter);\r\n\r\n        receipt.hasVoted = true;\r\n        receipt.proVote = support;\r\n        receipt.votes = votes;\r\n\r\n        Kripty.freezeAccount(voter, true);\r\n\r\n        emit Vote(voter, proposalId, support, votes);\r\n\r\n    }\r\n \r\n}\r\n\r\ninterface KriptyInterface {\r\n        function balanceOf(address account) external view returns (uint);\r\n        function freezeAccount(address target, bool freeze) external;\r\n}\r\n",
+  "sourcePath": "I:/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KriptyGob.sol",
   "ast": {
-    "absolutePath": "/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KryptiGob.sol",
+    "absolutePath": "/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KriptyGob.sol",
     "exportedSymbols": {
       "KriptyGob": [
         829
       ],
-      "KryptiInterface": [
+      "KriptyInterface": [
         844
       ]
     },
@@ -521,10 +521,10 @@
           },
           {
             "constant": false,
-            "functionSelector": "d33e1e20",
+            "functionSelector": "a18385c3",
             "id": 249,
             "mutability": "mutable",
-            "name": "Krypti",
+            "name": "Kripty",
             "nodeType": "VariableDeclaration",
             "overrides": null,
             "scope": 829,
@@ -532,19 +532,19 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_KryptiInterface_$844",
-              "typeString": "contract KryptiInterface"
+              "typeIdentifier": "t_contract$_KriptyInterface_$844",
+              "typeString": "contract KriptyInterface"
             },
             "typeName": {
               "contractScope": null,
               "id": 248,
-              "name": "KryptiInterface",
+              "name": "KriptyInterface",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 844,
               "src": "521:15:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                "typeString": "contract KryptiInterface"
+                "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                "typeString": "contract KriptyInterface"
               }
             },
             "value": null,
@@ -1573,14 +1573,14 @@
                     "leftHandSide": {
                       "argumentTypes": null,
                       "id": 335,
-                      "name": "Krypti",
+                      "name": "Kripty",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 249,
                       "src": "1601:6:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                        "typeString": "contract KryptiInterface"
+                        "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                        "typeString": "contract KriptyInterface"
                       }
                     },
                     "nodeType": "Assignment",
@@ -1591,7 +1591,7 @@
                         {
                           "argumentTypes": null,
                           "id": 337,
-                          "name": "krypti_",
+                          "name": "kripty_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 332,
@@ -1610,14 +1610,14 @@
                           }
                         ],
                         "id": 336,
-                        "name": "KryptiInterface",
+                        "name": "KriptyInterface",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 844,
                         "src": "1610:15:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_KryptiInterface_$844_$",
-                          "typeString": "type(contract KryptiInterface)"
+                          "typeIdentifier": "t_type$_t_contract$_KriptyInterface_$844_$",
+                          "typeString": "type(contract KriptyInterface)"
                         }
                       },
                       "id": 338,
@@ -1631,14 +1631,14 @@
                       "src": "1610:24:2",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                        "typeString": "contract KryptiInterface"
+                        "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                        "typeString": "contract KriptyInterface"
                       }
                     },
                     "src": "1601:33:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                      "typeString": "contract KryptiInterface"
+                      "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                      "typeString": "contract KriptyInterface"
                     }
                   },
                   "id": 340,
@@ -1663,7 +1663,7 @@
                   "constant": false,
                   "id": 332,
                   "mutability": "mutable",
-                  "name": "krypti_",
+                  "name": "kripty_",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 342,
@@ -1767,14 +1767,14 @@
                             "expression": {
                               "argumentTypes": null,
                               "id": 350,
-                              "name": "Krypti",
+                              "name": "Kripty",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 249,
                               "src": "1736:6:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                                "typeString": "contract KryptiInterface"
+                                "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                                "typeString": "contract KriptyInterface"
                               }
                             },
                             "id": 351,
@@ -3725,14 +3725,14 @@
                       "expression": {
                         "argumentTypes": null,
                         "id": 489,
-                        "name": "Krypti",
+                        "name": "Kripty",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 249,
                         "src": "2961:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                          "typeString": "contract KryptiInterface"
+                          "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                          "typeString": "contract KriptyInterface"
                         }
                       },
                       "id": 491,
@@ -4633,14 +4633,14 @@
                             "expression": {
                               "argumentTypes": null,
                               "id": 563,
-                              "name": "Krypti",
+                              "name": "Kripty",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 249,
                               "src": "3625:6:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                                "typeString": "contract KryptiInterface"
+                                "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                                "typeString": "contract KriptyInterface"
                               }
                             },
                             "id": 565,
@@ -5516,14 +5516,14 @@
                             "expression": {
                               "argumentTypes": null,
                               "id": 628,
-                              "name": "Krypti",
+                              "name": "Kripty",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 249,
                               "src": "4137:6:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                                "typeString": "contract KryptiInterface"
+                                "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                                "typeString": "contract KriptyInterface"
                               }
                             },
                             "id": 630,
@@ -7426,14 +7426,14 @@
                       "expression": {
                         "argumentTypes": null,
                         "id": 766,
-                        "name": "Krypti",
+                        "name": "Kripty",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 249,
                         "src": "5512:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                          "typeString": "contract KryptiInterface"
+                          "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                          "typeString": "contract KriptyInterface"
                         }
                       },
                       "id": 767,
@@ -7952,14 +7952,14 @@
                       "expression": {
                         "argumentTypes": null,
                         "id": 813,
-                        "name": "Krypti",
+                        "name": "Kripty",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 249,
                         "src": "5828:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KryptiInterface_$844",
-                          "typeString": "contract KryptiInterface"
+                          "typeIdentifier": "t_contract$_KriptyInterface_$844",
+                          "typeString": "contract KriptyInterface"
                         }
                       },
                       "id": 815,
@@ -8231,7 +8231,7 @@
         "linearizedBaseContracts": [
           844
         ],
-        "name": "KryptiInterface",
+        "name": "KriptyInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -8418,12 +8418,12 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KryptiGob.sol",
+      "absolutePath": "/I/Users/Luis/Documents/GitHub/blockchain/krypti/contracts/KriptyGob.sol",
       "exportedSymbols": {
         "KriptyGob": [
           829
         ],
-        "KryptiInterface": [
+        "KriptyInterface": [
           844
         ]
       },
@@ -8958,14 +8958,14 @@
           {
             "attributes": {
               "constant": false,
-              "functionSelector": "d33e1e20",
+              "functionSelector": "a18385c3",
               "mutability": "mutable",
-              "name": "Krypti",
+              "name": "Kripty",
               "overrides": null,
               "scope": 829,
               "stateVariable": true,
               "storageLocation": "default",
-              "type": "contract KryptiInterface",
+              "type": "contract KriptyInterface",
               "value": null,
               "visibility": "public"
             },
@@ -8973,9 +8973,9 @@
               {
                 "attributes": {
                   "contractScope": null,
-                  "name": "KryptiInterface",
+                  "name": "KriptyInterface",
                   "referencedDeclaration": 844,
-                  "type": "contract KryptiInterface"
+                  "type": "contract KriptyInterface"
                 },
                 "id": 248,
                 "name": "UserDefinedTypeName",
@@ -10052,7 +10052,7 @@
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
-                      "name": "krypti_",
+                      "name": "kripty_",
                       "overrides": null,
                       "scope": 342,
                       "stateVariable": false,
@@ -10105,7 +10105,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "operator": "=",
-                          "type": "contract KryptiInterface"
+                          "type": "contract KriptyInterface"
                         },
                         "children": [
                           {
@@ -10115,8 +10115,8 @@
                                 null
                               ],
                               "referencedDeclaration": 249,
-                              "type": "contract KryptiInterface",
-                              "value": "Krypti"
+                              "type": "contract KriptyInterface",
+                              "value": "Kripty"
                             },
                             "id": 335,
                             "name": "Identifier",
@@ -10134,7 +10134,7 @@
                                 null
                               ],
                               "tryCall": false,
-                              "type": "contract KryptiInterface",
+                              "type": "contract KriptyInterface",
                               "type_conversion": true
                             },
                             "children": [
@@ -10150,8 +10150,8 @@
                                     null
                                   ],
                                   "referencedDeclaration": 844,
-                                  "type": "type(contract KryptiInterface)",
-                                  "value": "KryptiInterface"
+                                  "type": "type(contract KriptyInterface)",
+                                  "value": "KriptyInterface"
                                 },
                                 "id": 336,
                                 "name": "Identifier",
@@ -10165,7 +10165,7 @@
                                   ],
                                   "referencedDeclaration": 332,
                                   "type": "address",
-                                  "value": "krypti_"
+                                  "value": "kripty_"
                                 },
                                 "id": 337,
                                 "name": "Identifier",
@@ -10383,8 +10383,8 @@
                                             null
                                           ],
                                           "referencedDeclaration": 249,
-                                          "type": "contract KryptiInterface",
-                                          "value": "Krypti"
+                                          "type": "contract KriptyInterface",
+                                          "value": "Kripty"
                                         },
                                         "id": 350,
                                         "name": "Identifier",
@@ -12438,8 +12438,8 @@
                                     null
                                   ],
                                   "referencedDeclaration": 249,
-                                  "type": "contract KryptiInterface",
-                                  "value": "Krypti"
+                                  "type": "contract KriptyInterface",
+                                  "value": "Kripty"
                                 },
                                 "id": 489,
                                 "name": "Identifier",
@@ -13555,8 +13555,8 @@
                                             null
                                           ],
                                           "referencedDeclaration": 249,
-                                          "type": "contract KryptiInterface",
-                                          "value": "Krypti"
+                                          "type": "contract KriptyInterface",
+                                          "value": "Kripty"
                                         },
                                         "id": 563,
                                         "name": "Identifier",
@@ -14506,8 +14506,8 @@
                                             null
                                           ],
                                           "referencedDeclaration": 249,
-                                          "type": "contract KryptiInterface",
-                                          "value": "Krypti"
+                                          "type": "contract KriptyInterface",
+                                          "value": "Kripty"
                                         },
                                         "id": 628,
                                         "name": "Identifier",
@@ -16498,8 +16498,8 @@
                                     null
                                   ],
                                   "referencedDeclaration": 249,
-                                  "type": "contract KryptiInterface",
-                                  "value": "Krypti"
+                                  "type": "contract KriptyInterface",
+                                  "value": "Kripty"
                                 },
                                 "id": 766,
                                 "name": "Identifier",
@@ -17053,8 +17053,8 @@
                                     null
                                   ],
                                   "referencedDeclaration": 249,
-                                  "type": "contract KryptiInterface",
-                                  "value": "Krypti"
+                                  "type": "contract KriptyInterface",
+                                  "value": "Kripty"
                                 },
                                 "id": 813,
                                 "name": "Identifier",
@@ -17251,7 +17251,7 @@
           "linearizedBaseContracts": [
             844
           ],
-          "name": "KryptiInterface",
+          "name": "KriptyInterface",
           "scope": 845
         },
         "children": [
@@ -17465,7 +17465,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-09T20:00:48.393Z",
+  "updatedAt": "2021-04-09T20:14:54.758Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -1,19 +1,19 @@
 pragma solidity ^0.7.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract KryptiGob is Ownable {
+contract KriptyGob is Ownable {
 
     string public constant name = "Kripty Governance contract";
 
-    function supportVotes() public pure returns (uint) { return 100000; }
+    function supportVotes() public pure returns (uint) { return 1000; }
 
-    function proposalThreshold() public pure returns (uint) { return 10000; }
+    function proposalThreshold() public pure returns (uint) { return 50; }
     
     function votingDelay() public pure returns (uint) { return 1; } // 1 block
 
     function votingPeriod() public pure returns (uint) { return 17280; } //3 days in blocks
 
-    KryptiInterface public Krypti;
+    KriptyInterface public Kripty;
 
     uint public proposalCount;
 
@@ -55,12 +55,12 @@ contract KryptiGob is Ownable {
     event ProposalCanceled(uint id);
     event ProposalExecuted(uint id);
 
-    constructor(address krypti_) public {
-        Krypti = KryptiInterface(krypti_);
+    constructor(address kripty_) public {
+        Kripty = KriptyInterface(kripty_);
     }
 
     function propose(string memory description_) public returns (uint) {
-        require(Krypti.balanceOf(msg.sender) >= proposalThreshold(), "Proposer votes below proposal threshold");
+        require(Kripty.balanceOf(msg.sender) >= proposalThreshold(), "Proposer votes below proposal threshold");
 
         uint lastestProposalId = lastestProposalIds[msg.sender];
         if (lastestProposalId != 0) {
@@ -84,7 +84,7 @@ contract KryptiGob is Ownable {
         proposals[proposalCount].description = description_;
 
         lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;
-        Krypti.freezeAccount(msg.sender, true);
+        Kripty.freezeAccount(msg.sender, true);
 
         emit ProposalCreated(proposals[proposalCount].id, msg.sender, startBlock, endBlock, description_);
         return proposals[proposalCount].id;
@@ -98,7 +98,7 @@ contract KryptiGob is Ownable {
         proposal.executed = true;
 
         for(uint i = 0; i < proposal.keys.length ; i++){
-            Krypti.freezeAccount(proposal.keys[i] , false);
+            Kripty.freezeAccount(proposal.keys[i] , false);
         }
 
         emit ProposalExecuted(proposalId);
@@ -111,13 +111,13 @@ contract KryptiGob is Ownable {
         proposal.canceled = true;
 
         for(uint i = 0; i < proposal.keys.length; i++){
-            Krypti.freezeAccount(proposal.keys[i] , false);
+            Kripty.freezeAccount(proposal.keys[i] , false);
         }
 
         emit ProposalCanceled(proposalId);
     }
 
-    function state(uint proposalId) public view returns (ProposalState) {
+    function state(uint proposalId) private view returns (ProposalState) {
         require(proposalCount >= proposalId && proposalId > 0, "invalid proposal id");
         Proposal storage proposal = proposals[proposalId];
         if (proposal.canceled) {
@@ -142,12 +142,12 @@ contract KryptiGob is Ownable {
         Receipt storage receipt = proposal.receipts[voter];
         require(receipt.hasVoted == false , "voter already voted");
         
-        uint votes = Krypti.balanceOf(voter);
+        uint votes = Kripty.balanceOf(voter);
 
         if (support) {
-            proposal.proVotes = votes;
+            proposal.proVotes += votes;
         } else {
-            proposal.againsVotes = votes;
+            proposal.againsVotes += votes;
         }
         proposal.keys.push(voter);
 
@@ -155,7 +155,7 @@ contract KryptiGob is Ownable {
         receipt.proVote = support;
         receipt.votes = votes;
 
-        Krypti.freezeAccount(voter, true);
+        Kripty.freezeAccount(voter, true);
 
         emit Vote(voter, proposalId, support, votes);
 
@@ -163,7 +163,7 @@ contract KryptiGob is Ownable {
  
 }
 
-interface KryptiInterface {
+interface KriptyInterface {
         function balanceOf(address account) external view returns (uint);
         function freezeAccount(address target, bool freeze) external;
 }
