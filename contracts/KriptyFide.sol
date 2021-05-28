@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract KriptyEscrow is Ownable {
     
     mapping (address => uint256) private claimedTokens;
+    uint private minUserAmount = 500000000;
 
     Kripty public instance;
 
@@ -19,7 +20,7 @@ contract KriptyEscrow is Ownable {
 
     function claimTokens(uint256 amount) external {
         uint256 claimedTokensfrom  = claimedTokens[msg.sender];
-        require(amount - claimedTokensfrom > 10 && amount - claimedTokensfrom <= 100 &&  amount + claimedTokensfrom <= 100, "Invalid amount");
+        require(amount >= minUserAmount , "Invalid amount");
         instance.transfer(msg.sender, (amount - claimedTokensfrom));
         claimedTokens[msg.sender] = claimedTokensfrom + amount;
     }

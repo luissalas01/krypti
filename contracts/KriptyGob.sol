@@ -5,13 +5,13 @@ contract KriptyGob is Ownable {
 
     string public constant name = "Kripty Governance contract";
 
-    function supportVotes() public pure returns (uint) { return 1000; }
+    function supportShortVotes() public pure returns (uint) { return 10000000000000; }
 
-    function proposalThreshold() public pure returns (uint) { return 50; }
+    function proposalShortThreshold() public pure returns (uint) { return 500000000000; }
     
     function votingDelay() public pure returns (uint) { return 1; } // 1 block
 
-    function votingPeriod() public pure returns (uint) { return 17280; } //3 days in blocks
+    function votingPeriod() public pure returns (uint) { return 180000; } //3 days in blocks
 
     KriptyInterface public Kripty;
 
@@ -60,7 +60,7 @@ contract KriptyGob is Ownable {
     }
 
     function propose(string memory description_) public returns (uint) {
-        require(Kripty.balanceOf(msg.sender) >= proposalThreshold(), "Proposer votes below proposal threshold");
+        require(Kripty.balanceOf(msg.sender) >= proposalShortThreshold(), "Proposer votes below proposal threshold");
 
         uint lastestProposalId = lastestProposalIds[msg.sender];
         if (lastestProposalId != 0) {
@@ -91,7 +91,7 @@ contract KriptyGob is Ownable {
     }
 
     function execute(uint proposalId) public payable onlyOwner() {
-        //TODO: agregar require de estado vs supportVotes
+        //TODO: agregar require de estado vs supportShortVotes
         require(state(proposalId) != ProposalState.Defeated || state(proposalId) != ProposalState.Canceled, "Votos no suficientes para ejecutar esta propuesta");
         Proposal storage proposal = proposals[proposalId];
 
@@ -126,7 +126,7 @@ contract KriptyGob is Ownable {
             return ProposalState.Pending;
         } else if (block.number <= proposal.endBlock) {
             return ProposalState.Active;
-        } else if (proposal.proVotes <= proposal.againsVotes || proposal.proVotes < supportVotes()) {
+        } else if (proposal.proVotes <= proposal.againsVotes || proposal.proVotes < supportShortVotes()) {
             return ProposalState.Defeated;
         } else if (proposal.executed) {
             return ProposalState.Executed;
@@ -137,7 +137,7 @@ contract KriptyGob is Ownable {
     }
 
     function vote(address voter, uint proposalId, bool support) public {
-        require(state(proposalId) == ProposalState.Active, "Voting is closed");
+        require(state(proposalId) == ProposalState.Active || state(proposalId) == ProposalState.Pending, "Voting is closed");
         Proposal storage proposal = proposals[proposalId];
         Receipt storage receipt = proposal.receipts[voter];
         require(receipt.hasVoted == false , "voter already voted");
