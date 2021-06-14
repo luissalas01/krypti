@@ -12,6 +12,11 @@ contract Kripty is ERC20Capped, Ownable {
 	mapping (address=>bool) private excludeFromFee;
 	uint private capToken = 1;
 
+	struct FrozenReceipt {
+		uint projectId;
+		uint amount;
+	}
+
 	event FrozenFunds(address target, bool frozen);
 
 	constructor(
@@ -21,11 +26,11 @@ contract Kripty is ERC20Capped, Ownable {
 	)
 
 	ERC20("Kripty", "KRPT")
-	ERC20Capped(1000000000000000000)
+	ERC20Capped(1000000000000000)
 	public{
 		_setupDecimals(0);
-		 _mint(_ownerAddress, 400000000000000000);
-		 _mint(_escrow, 600000000000000000);
+		 _mint(_ownerAddress, 400000000000000);
+		 _mint(_escrow, 600000000000000);
 		releaseDate  = block.timestamp;
 		excludeFromFee[_kriptyCoin] = true;
 		KriptyCoin = KriptyCoinInterface(_kriptyCoin);
@@ -63,7 +68,7 @@ contract Kripty is ERC20Capped, Ownable {
 	}
 
 	function  balanceOf(address account) public view override returns (uint256){
-		return balanceOf(account)/capToken;
+		return super.balanceOf(account)/capToken;
 	}
 	
 }

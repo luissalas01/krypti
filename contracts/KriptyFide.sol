@@ -18,7 +18,7 @@ contract KriptyEscrow is Ownable {
         instance = Kripty(tokenAddress);
     }
 
-    function claimTokens(uint256 amount) external {
+    function claimTokens(uint256 amount) external {  //Falta modificador de  privacidad
         uint256 claimedTokensfrom  = claimedTokens[msg.sender];
         require(amount >= minUserAmount , "Invalid amount");
         instance.transfer(msg.sender, (amount - claimedTokensfrom));

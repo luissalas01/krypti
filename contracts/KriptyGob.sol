@@ -5,9 +5,9 @@ contract KriptyGob is Ownable {
 
     string public constant name = "Kripty Governance contract";
 
-    function supportShortVotes() public pure returns (uint) { return 10000000000000; }
+    function supportShortVotes() public pure returns (uint) { return 10000000000; }
 
-    function proposalShortThreshold() public pure returns (uint) { return 500000000000; }
+    function proposalShortThreshold() public pure returns (uint) { return 500000000; }
     
     function votingDelay() public pure returns (uint) { return 1; } // 1 block
 
