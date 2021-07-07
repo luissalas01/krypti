@@ -12,11 +12,6 @@ contract Kripty is ERC20Capped, Ownable {
 	mapping (address=>bool) private excludeFromFee;
 	uint private capToken = 1;
 
-	struct FrozenReceipt {
-		uint projectId;
-		uint amount;
-	}
-
 	event FrozenFunds(address target, bool frozen);
 
 	constructor(
@@ -67,8 +62,17 @@ contract Kripty is ERC20Capped, Ownable {
 		capToken = decimals;
 	}
 
-	function  balanceOf(address account) public view override returns (uint256){
+	function balanceOf(address account) public view override returns (uint256){
+		if(frozenacc[msg.sender])//recordar para que este if
 		return super.balanceOf(account)/capToken;
+	}
+
+	function _burn(address account, uint amount) internal override onlyOwner() {
+		super._burn(account, amount);
+	}
+
+	function _mint(address account, uint amount) internal override onlyOwner() {
+		super._mint(account, amount);
 	}
 	
 }

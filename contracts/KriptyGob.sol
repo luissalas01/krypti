@@ -5,13 +5,14 @@ contract KriptyGob is Ownable {
 
     string public constant name = "Kripty Governance contract";
 
-    function supportShortVotes() public pure returns (uint) { return 10000000000; }
+    function supportShortVotes() public pure returns (uint) { return 10000000; }
+    //function supportVotes() public pure returns (uint) { return 10000000000; }
 
-    function proposalShortThreshold() public pure returns (uint) { return 500000000; }
-    
-    function votingDelay() public pure returns (uint) { return 1; } // 1 block
+    function proposalShortThreshold() public pure returns (uint) { return 500000; }
+    //function proposalThreshold() public pure returns (uint) { return 500000000;
 
-    function votingPeriod() public pure returns (uint) { return 180000; } //3 days in blocks
+    function votingDelay() public pure returns (uint) { return 86400; } //1 days in sec
+    function votingPeriod() public pure returns (uint) { return 259200; } //3 days in sec
 
     KriptyInterface public Kripty;
 
@@ -20,8 +21,8 @@ contract KriptyGob is Ownable {
     struct Proposal {
         uint id;
         address proposer;
-        uint startBlock;
-        uint endBlock;
+        uint startDate;
+        uint endDate;
         uint proVotes;
         uint againsVotes;
         bool canceled;
@@ -69,14 +70,14 @@ contract KriptyGob is Ownable {
             require(proposalState != ProposalState.Pending, "Found a pending proposal from you");
         }
         
-        uint startBlock = block.number + votingDelay();
-        uint endBlock = startBlock + votingPeriod();
+        uint startDate = block.timestamp + votingDelay();
+        uint endDate = startDate + votingPeriod();
         proposalCount++;
 
         proposals[proposalCount].id = proposalCount;
         proposals[proposalCount].proposer = msg.sender;
-        proposals[proposalCount].startBlock = startBlock;
-        proposals[proposalCount].endBlock = endBlock;
+        proposals[proposalCount].startDate = startDate;
+        proposals[proposalCount].endDate = endDate;
         proposals[proposalCount].proVotes = 0;
         proposals[proposalCount].againsVotes = 0;
         proposals[proposalCount].canceled = false;
@@ -84,9 +85,9 @@ contract KriptyGob is Ownable {
         proposals[proposalCount].description = description_;
 
         lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;
-        Kripty.freezeAccount(msg.sender, true);
+        Kripty._burn(msg.sender, proposalShortThreshold());
 
-        emit ProposalCreated(proposals[proposalCount].id, msg.sender, startBlock, endBlock, description_);
+        emit ProposalCreated(proposals[proposalCount].id, msg.sender, startDate, endDate, description_);
         return proposals[proposalCount].id;
     }
 
@@ -114,23 +115,26 @@ contract KriptyGob is Ownable {
             Kripty.freezeAccount(proposal.keys[i] , false);
         }
 
+        Kripty._mint(proposal.proposer , (proposalShortThreshold()*90)/100);
+
         emit ProposalCanceled(proposalId);
     }
 
-    function state(uint proposalId) private view returns (ProposalState) {
+    function state(uint proposalId) public view returns (ProposalState) {
         require(proposalCount >= proposalId && proposalId > 0, "invalid proposal id");
         Proposal storage proposal = proposals[proposalId];
         if (proposal.canceled) {
             return ProposalState.Canceled;
-        } else if (block.number <= proposal.startBlock) {
+        } else if (block.timestamp <= proposal.startDate) {
             return ProposalState.Pending;
-        } else if (block.number <= proposal.endBlock) {
+        } else if (block.number <= proposal.endDate) {
             return ProposalState.Active;
         } else if (proposal.proVotes <= proposal.againsVotes || proposal.proVotes < supportShortVotes()) {
             return ProposalState.Defeated;
         } else if (proposal.executed) {
             return ProposalState.Executed;
-        //} else if (block.timestamp >= ) TODO: retornar expired
+        } else if (block.timestamp >= proposal.endDate){
+            return ProposalState.Expired;
         } else {
             return ProposalState.Succeeded;
         }
@@ -166,4 +170,6 @@ contract KriptyGob is Ownable {
 interface KriptyInterface {
         function balanceOf(address account) external view returns (uint);
         function freezeAccount(address target, bool freeze) external;
+        function _burn(address account, uint amount) external;
+        function _mint(address account, uint amount) external;
 }

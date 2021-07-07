@@ -9,31 +9,32 @@ contract KriptyCoin is ERC20Capped, Ownable {
 	mapping (address => uint) public claimedTokensFromPool;
 	uint private _txFeeStacking;
 	uint private _liqFee;
-	uint private _holFee;
 	uint256 _precision = 1*10**18;
 	uint private capToken;
 	address kriptyGovToken;
+	function stacking() public view returns (uint) { return _txFeeStacking; }
+	function networkFee() public view returns (uint) { return _liqFee; }
+
+
 
 
 	constructor(
-		address _ownerAddress,
+		//address _ownerAddress, ver para que lo usabamos
 		address _burnAddress,
 		address _devTeam,
 		address _airDrop,
-		uint liqFee,
-		uint holFee
+		uint liqFee
 	)
 
 	ERC20("KriptyCoin", "KRCO")
-	ERC20Capped(1000000000000000000)
+	ERC20Capped(1000000000000000)
 	public{
 		_setupDecimals(0);
-		_mint(address(this), 525000000000000000);
-		_mint(_burnAddress, 400000000000000000);
-		_mint(_devTeam, 25000000000000000);
-		_mint(_airDrop, 50000000000000000);
+		_mint(address(this), 525000000000000);
+		_mint(_burnAddress, 400000000000000);
+		_mint(_devTeam, 25000000000000);
+		_mint(_airDrop, 50000000000000);
 		_liqFee = liqFee;
-		_holFee = holFee;
 		releaseDate  = block.timestamp;
 	}
 
