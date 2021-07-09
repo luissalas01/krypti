@@ -10,7 +10,7 @@ contract KriptyCoin is ERC20Capped, Ownable {
 	uint private _txFeeStacking;
 	uint private _liqFee;
 	uint256 _precision = 1*10**18;
-	uint private capToken;
+	uint private capToken = 1;
 	address kriptyGovToken;
 	function stacking() public view returns (uint) { return _txFeeStacking; }
 	function networkFee() public view returns (uint) { return _liqFee; }
@@ -26,7 +26,7 @@ contract KriptyCoin is ERC20Capped, Ownable {
 		uint liqFee
 	)
 
-	ERC20("KriptyCoin", "KRCO")
+	ERC20("KriptyCoin", "KTC")
 	ERC20Capped(1000000000000000)
 	public{
 		_setupDecimals(0);
@@ -55,8 +55,9 @@ contract KriptyCoin is ERC20Capped, Ownable {
 		//Se agrega en el mapping la reward reclamada
 		//Se queman los tokens equivalentes al reward del contrato
 		//Y se crean nuevos tokens equivalentes en la cuenta de quien recive el reward
+		uint claimed = claimedTokensFromPool[msg.sender];
 		super._transfer(_msgSender(), recipient, amount*capToken);
-		uint txRewards = (balanceOf(msg.sender) * _txFeeStacking) / _precision;
+		uint txRewards = ((balanceOf(msg.sender) * _txFeeStacking) / _precision) - claimed;
 		claimedTokensFromPool[msg.sender] += txRewards;
 		
 		//_burn(address(this), txRewards);
@@ -94,18 +95,14 @@ contract KriptyCoin is ERC20Capped, Ownable {
 		_txFeeStacking += amount;
 	}
 
-	//function claimTokens(uint amount) public onlyOwner() {
-	//	(bool success, ) = owner.call{vaue: address(this).balance}("");
-	//	require(success, "");
-	//}
-
 	function  balanceOf(address account) public view override returns (uint256){
 		uint ownerBalance = super.balanceOf(account);
 		uint txRewards = (ownerBalance * _txFeeStacking) / _precision;//aun no esta bien, problema en presition si se hace cap
+		uint claimed = claimedTokensFromPool[account];
 		if(txRewards/capToken >= 1){
-			return (ownerBalance + txRewards)/capToken;
+			return ((ownerBalance + txRewards)/capToken)-claimed;
 		}else{
-			return ownerBalance/capToken;
+			return (ownerBalance/capToken)-claimed;
 		}
 		
 	}

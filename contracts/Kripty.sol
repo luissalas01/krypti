@@ -2,9 +2,10 @@ pragma solidity ^0.7.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20Capped.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract Kripty is ERC20Capped, Ownable {
+contract Kripty is ERC20Capped, ERC20Burnable, Ownable {
 	
 	uint256 public releaseDate;
 	KriptyCoinInterface public KriptyCoin;
@@ -20,7 +21,7 @@ contract Kripty is ERC20Capped, Ownable {
 		address _kriptyCoin
 	)
 
-	ERC20("Kripty", "KRPT")
+	ERC20("Kripty Governance Token", "KTY")
 	ERC20Capped(1000000000000000)
 	public{
 		_setupDecimals(0);
@@ -44,13 +45,13 @@ contract Kripty is ERC20Capped, Ownable {
 		}
 
 
-        _transfer(_msgSender(), recipient, amount*capToken);
+        super._transfer(_msgSender(), recipient, amount*capToken);
         return true;
     }
 
-	function _beforeTokenTransfer(address from, address to, uint256 amount) internal override (ERC20Capped) {
+	function _beforeTokenTransfer(address from, address to, uint256 amount) internal override (ERC20, ERC20Capped) {
         super._beforeTokenTransfer(from, to, amount);
-				require(!frozenacc[msg.sender], "El usuario tiene congelados sus fondos");
+				require(!frozenacc[msg.sender], "Frozen funds to this user");
     }
 
 	function _setSwapExclude(address swapPair) public onlyOwner(){
@@ -63,16 +64,15 @@ contract Kripty is ERC20Capped, Ownable {
 	}
 
 	function balanceOf(address account) public view override returns (uint256){
-		if(frozenacc[msg.sender])//recordar para que este if
 		return super.balanceOf(account)/capToken;
 	}
 
-	function _burn(address account, uint amount) internal override onlyOwner() {
-		super._burn(account, amount);
+	function burn(address account, uint amount) public onlyOwner() {
+		_burn(account, amount);
 	}
 
-	function _mint(address account, uint amount) internal override onlyOwner() {
-		super._mint(account, amount);
+	function mint(address account, uint amount) public onlyOwner() {
+		_mint(account, amount);
 	}
 	
 }

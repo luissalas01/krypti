@@ -3,7 +3,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract KriptyGob is Ownable {
 
-    string public constant name = "Kripty Governance contract";
+    string public constant name = "Kripty Governance Contract";
 
     function supportShortVotes() public pure returns (uint) { return 10000000; }
     //function supportVotes() public pure returns (uint) { return 10000000000; }
@@ -85,7 +85,7 @@ contract KriptyGob is Ownable {
         proposals[proposalCount].description = description_;
 
         lastestProposalIds[proposals[proposalCount].proposer] = proposals[proposalCount].id;
-        Kripty._burn(msg.sender, proposalShortThreshold());
+        Kripty.burn(msg.sender, proposalShortThreshold());
 
         emit ProposalCreated(proposals[proposalCount].id, msg.sender, startDate, endDate, description_);
         return proposals[proposalCount].id;
@@ -115,7 +115,7 @@ contract KriptyGob is Ownable {
             Kripty.freezeAccount(proposal.keys[i] , false);
         }
 
-        Kripty._mint(proposal.proposer , (proposalShortThreshold()*90)/100);
+        Kripty.mint(proposal.proposer , (proposalShortThreshold()*90)/100);
 
         emit ProposalCanceled(proposalId);
     }
@@ -170,6 +170,6 @@ contract KriptyGob is Ownable {
 interface KriptyInterface {
         function balanceOf(address account) external view returns (uint);
         function freezeAccount(address target, bool freeze) external;
-        function _burn(address account, uint amount) external;
-        function _mint(address account, uint amount) external;
+        function burn(address account, uint amount) external;
+        function mint(address account, uint amount) external;
 }
